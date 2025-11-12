@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ContactForm } from "@/components/ContactForm";
 import { 
   Brain, 
   Users, 
@@ -271,24 +272,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="contact" className="py-20 bg-gradient-hero relative overflow-hidden">
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
+      {/* CTA Section with Contact Form */}
+      <section id="contact" className="py-20 bg-gradient-section">
+        <div className="container px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
               Dê o próximo passo rumo à educação inteligente
             </h2>
-            <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Agende uma conversa sem compromisso e descubra como a IA pode transformar sua escola
             </p>
-            <Button 
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-lg px-10 py-6 shadow-hover transition-all duration-300 hover:scale-105"
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Agende uma Conversa
-            </Button>
           </div>
+          
+          <ContactForm />
         </div>
       </section>
 
