@@ -87,8 +87,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <Card className="border-border bg-card shadow-card max-w-2xl mx-auto">
-      <CardContent className="p-8">
+    <Card className="max-w-2xl mx-auto shadow-glass border-0 bg-white/60 dark:bg-card/60 backdrop-blur-xl">
+      <CardContent className="p-10">
         <div className="mb-6 text-center">
           <h3 className="text-2xl font-bold text-card-foreground mb-2">
             Entre em Contato
@@ -182,7 +182,7 @@ export const ContactForm = () => {
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full shadow-hover transition-all duration-500 hover:scale-[1.02]"
             >
               {isSubmitting ? (
                 <>
