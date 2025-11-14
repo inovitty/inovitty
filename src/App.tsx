@@ -9,6 +9,9 @@ import Services from "./pages/Services";
 import SuccessStories from "./pages/SuccessStories";
 import Blog from "./pages/Blog";
 import Resources from "./pages/Resources";
+import BlogPost1 from "./pages/BlogPost1";
+import BlogPost2 from "./pages/BlogPost2";
+import BlogPost3 from "./pages/BlogPost3";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/casos-de-sucesso" element={<SuccessStories />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/materiais" element={<Resources />} />
+          <Route path="/blog/planos-de-aula-ia" element={<BlogPost1 />} />
+          <Route path="/blog/etica-ia-escola" element={<BlogPost2 />} />
+          <Route path="/blog/ferramentas-ia-professores" element={<BlogPost3 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
