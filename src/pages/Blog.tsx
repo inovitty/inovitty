@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight, BookOpen, Lightbulb, Shield, Sparkles, Brain, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const categories = [
@@ -17,7 +18,8 @@ const Blog = () => {
     date: "15 de Dezembro, 2025",
     category: "IA na Prática",
     readTime: "8 min",
-    image: BookOpen
+    image: BookOpen,
+    link: "/blog/planos-de-aula-ia"
   };
 
   const posts = [
@@ -27,7 +29,8 @@ const Blog = () => {
       date: "10 de Dezembro, 2025",
       category: "Ética e IA",
       readTime: "6 min",
-      icon: Shield
+      icon: Shield,
+      link: "/blog/etica-ia-escola"
     },
     {
       title: "5 ferramentas de IA que todo professor deveria conhecer",
@@ -35,7 +38,8 @@ const Blog = () => {
       date: "05 de Dezembro, 2025",
       category: "Ferramentas",
       readTime: "10 min",
-      icon: Sparkles
+      icon: Sparkles,
+      link: "/blog/ferramentas-ia-professores"
     },
     {
       title: "ChatGPT na educação: guia completo para professores",
@@ -134,39 +138,41 @@ const Blog = () => {
       <section className="py-16 bg-gradient-section">
         <div className="container px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
-            <Card className="border-border bg-card shadow-hover overflow-hidden hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="bg-primary/5 flex items-center justify-center p-12">
-                    <featuredPost.image className="h-32 w-32 text-primary" />
-                  </div>
-                  <div className="p-8 md:p-12 space-y-4">
-                    <div className="flex items-center gap-4 text-sm">
-                      <Badge>{featuredPost.category}</Badge>
-                      <span className="text-muted-foreground">Artigo em Destaque</span>
+            <Link to={featuredPost.link}>
+              <Card className="border-border bg-card shadow-hover overflow-hidden hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-2 gap-0">
+                    <div className="bg-primary/5 flex items-center justify-center p-12">
+                      <featuredPost.image className="h-32 w-32 text-primary" />
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-card-foreground leading-tight">
-                      {featuredPost.title}
-                    </h2>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                      {featuredPost.excerpt}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground pt-4">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        <span>{featuredPost.date}</span>
+                    <div className="p-8 md:p-12 space-y-4">
+                      <div className="flex items-center gap-4 text-sm">
+                        <Badge>{featuredPost.category}</Badge>
+                        <span className="text-muted-foreground">Artigo em Destaque</span>
                       </div>
-                      <span>•</span>
-                      <span>{featuredPost.readTime} de leitura</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-primary font-medium pt-2">
-                      Ler artigo completo
-                      <ArrowRight className="h-4 w-4" />
+                      <h2 className="text-2xl md:text-3xl font-bold text-card-foreground leading-tight">
+                        {featuredPost.title}
+                      </h2>
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {featuredPost.excerpt}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground pt-4">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4" />
+                          <span>{featuredPost.date}</span>
+                        </div>
+                        <span>•</span>
+                        <span>{featuredPost.readTime} de leitura</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-primary font-medium pt-2">
+                        Ler artigo completo
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
@@ -181,35 +187,36 @@ const Blog = () => {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post, index) => (
-                <Card 
-                  key={index}
-                  className="border-border bg-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
-                >
-                  <CardContent className="p-6 space-y-4">
-                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <post.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <Badge variant="outline">{post.category}</Badge>
-                    <h3 className="text-xl font-semibold text-card-foreground group-hover:text-primary transition-colors leading-tight">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
-                        <span>{post.date}</span>
+                <Link key={index} to={post.link || "/blog"}>
+                  <Card 
+                    className="border-border bg-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 cursor-pointer group h-full"
+                  >
+                    <CardContent className="p-6 space-y-4">
+                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <post.icon className="h-6 w-6 text-primary" />
                       </div>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-primary font-medium text-sm pt-2">
-                      Ler mais
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </CardContent>
-                </Card>
+                      <Badge variant="outline">{post.category}</Badge>
+                      <h3 className="text-xl font-semibold text-card-foreground group-hover:text-primary transition-colors leading-tight">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          <span>{post.date}</span>
+                        </div>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-primary font-medium text-sm pt-2">
+                        Ler mais
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
