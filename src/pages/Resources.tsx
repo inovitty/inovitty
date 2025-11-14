@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, FileText, CheckCircle, BookOpen, Target, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Resources = () => {
   const resources = [
@@ -10,6 +11,7 @@ const Resources = () => {
       title: "10 Maneiras Práticas de Usar IA em Sala de Aula",
       description: "E-book gratuito com estratégias comprovadas para integrar inteligência artificial no dia a dia escolar, com exemplos práticos e tutoriais passo a passo.",
       format: "PDF - 25 páginas",
+      link: "/materiais/10-maneiras-ia-sala-aula",
       topics: [
         "Preparação de aulas com IA generativa",
         "Personalização de atividades",
@@ -23,6 +25,7 @@ const Resources = () => {
       title: "Checklist: Maturidade Digital da Sua Escola",
       description: "Ferramenta de autoavaliação para diagnosticar o nível de maturidade digital da sua instituição e identificar oportunidades de melhoria.",
       format: "PDF Interativo - 12 páginas",
+      link: "/materiais/checklist-maturidade-digital",
       topics: [
         "Infraestrutura tecnológica",
         "Competências digitais dos professores",
@@ -134,13 +137,15 @@ const Resources = () => {
                         </ul>
                       </div>
                       
-                      <Button 
-                        size="lg"
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold mt-4"
-                      >
-                        <Download className="mr-2 h-5 w-5" />
-                        Baixar Gratuitamente
-                      </Button>
+                      <Link to={resource.link}>
+                        <Button 
+                          size="lg"
+                          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold mt-4"
+                        >
+                          <Download className="mr-2 h-5 w-5" />
+                          Acessar Material
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
